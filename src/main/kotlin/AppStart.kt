@@ -10,4 +10,7 @@ private fun runChapter1() {
     println("01. answer=" + test.Question1())
     println("02. answer=" + test.Question2())
     println("03. answer=" + test.Question3())
+
+    val retMap = test.Question4()
+    println("04. answer=" + retMap.keys)
 }
