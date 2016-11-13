@@ -11,4 +11,12 @@ class KnockStringTest {
         Assert.assertEquals("ace", test1.intervalSubstring(2))
         Assert.assertEquals("ad", test1.intervalSubstring(3))
     }
+
+    @Test
+    fun unionTest() {
+        val test1 = KnockString("abcde")
+        Assert.assertEquals("atbecde", test1.union("te"))
+        Assert.assertEquals("aabbccddee", test1.union("abcde"))
+        Assert.assertEquals("aabbccddeefg", test1.union("abcdefg"))
+    }
 }

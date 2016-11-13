@@ -11,8 +11,7 @@ class Chapter1 {
      * 文字列"stressed"の文字を逆に（末尾から先頭に向かって）並べた文字列を得よ
      */
     fun Question0(): String {
-        val str = "stressed"
-        return str.reversed()
+        return "stressed".reversed()
     }
 
     /**
@@ -27,8 +26,7 @@ class Chapter1 {
      * 「パトカー」＋「タクシー」の文字を先頭から交互に連結して文字列「パタトクカシーー」を得よ
      */
     fun Question2(): String {
-        val str1 = "パトカー"
-        val str2 = "タクシー"
-        return ""
+        val kStr = KnockString("パトカー")
+        return kStr.union("タクシー")
     }
 }
