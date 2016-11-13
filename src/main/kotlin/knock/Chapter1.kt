@@ -29,4 +29,16 @@ class Chapter1 {
         val kStr = KnockString("パトカー")
         return kStr.union("タクシー")
     }
+
+    /**
+     * "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
+     * という文を単語に分解し，各単語の（アルファベットの）文字数を先頭から出現順に並べたリストを作成せよ
+     */
+    fun Question3(): List<Int> {
+        val questionStr = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
+        val wordList = questionStr.split(" ")
+        return wordList.map { w -> w.replace(",", "").replace(".", "").length }
+    }
+
+    
 }
