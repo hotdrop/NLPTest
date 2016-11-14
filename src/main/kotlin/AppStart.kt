@@ -1,4 +1,5 @@
 import knock.Chapter1
+import utility.Ngram
 
 fun main(args: Array<String>) {
     runChapter1()
@@ -10,7 +11,7 @@ private fun runChapter1() {
     println("01. answer=" + test.Question1())
     println("02. answer=" + test.Question2())
     println("03. answer=" + test.Question3())
-
-    val retMap = test.Question4()
-    println("04. answer=" + retMap.keys)
+    println("04. answer=" + test.Question4().keys)
+    println("05. answer")
+    test.Question5()
 }

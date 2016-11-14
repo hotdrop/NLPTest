@@ -16,4 +16,5 @@ class Chapter1Test {
         val prob = Chapter1()
         Assert.assertEquals("パタトクカシーー", prob.Question2())
     }
+
 }
