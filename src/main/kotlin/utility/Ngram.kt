@@ -7,6 +7,7 @@ class Ngram(n: Int) {
     fun makeWord(wordList: List<String>): List<String> {
         val end = wordList.size - n
         var retList: MutableList<String> = mutableListOf()
+        // ここなんか違う気がする・・
         for(i in 0..end) {
             retList.add(wordList[i] + ":" + wordList[i+n-1])
         }
