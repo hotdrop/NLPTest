@@ -107,7 +107,8 @@ class Chapter1 {
 
         println("06. answer ")
         // 和集合
-        println("  union X and Y = " + xGram.toMutableList().addAll(yGram))
+        val mutableXGram = xGram.toMutableList().addAll(yGram)
+        println("  union X and Y = " + mutableXGram)
         // 積集合
         println("  intersection X and Y = " + xGram.filter { x -> yGram.contains(x) })
         // 差集合
