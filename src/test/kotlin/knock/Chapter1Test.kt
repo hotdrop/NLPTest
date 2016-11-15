@@ -17,4 +17,11 @@ class Chapter1Test {
         Assert.assertEquals("パタトクカシーー", prob.Question2())
     }
 
+    @Test
+    fun intersection() {
+        val test1 = listOf("1", "4", "3", "7")
+        val test2 = listOf("1", "2", "5", "3")
+        println(test1.filterNot { x -> test2.contains(x) })
+    }
+
 }

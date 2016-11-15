@@ -8,30 +8,40 @@ import utility.Ngram
  */
 class Chapter1 {
 
+    fun run() {
+        Question0()
+        Question1()
+        Question2()
+        Question3()
+        Question4()
+        Question5()
+        Question6()
+    }
+
     /**
      * 文字列の逆順
      * 文字列"stressed"の文字を逆に（末尾から先頭に向かって）並べた文字列を得よ
      */
-    fun Question0(): String {
-        return "stressed".reversed()
+    fun Question0() {
+        println("00. answer=" + "stressed".reversed())
     }
 
     /**
      * 「パタトクカシーー」
      * 「パタトクカシーー」という文字列の1,3,5,7文字目を取り出して連結した文字列を得よ
      */
-    fun Question1(): String {
+    fun Question1() {
         val kStr = KnockString("パタトクカシーー")
-        return kStr.intervalSubstring(2)
+        println("01. answer=" + kStr.intervalSubstring(2))
     }
 
     /**
      * 「パトカー」＋「タクシー」＝「パタトクカシーー」
      * 「パトカー」＋「タクシー」の文字を先頭から交互に連結して文字列「パタトクカシーー」を得よ
      */
-    fun Question2(): String {
+    fun Question2() {
         val kStr = KnockString("パトカー")
-        return kStr.union("タクシー")
+        println("02. answer=" + kStr.union("タクシー"))
     }
 
     /**
@@ -39,10 +49,10 @@ class Chapter1 {
      * "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
      * という文を単語に分解し，各単語の（アルファベットの）文字数を先頭から出現順に並べたリストを作成せよ
      */
-    fun Question3(): List<Int> {
+    fun Question3() {
         val questionStr = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
         val wordList = questionStr.replace(",", "").replace(".", "").split(" ")
-        return wordList.map(String::length)
+        println("03. answer=" + wordList.map(String::length))
     }
 
     /**
@@ -54,21 +64,21 @@ class Chapter1 {
      *  それ以外の単語は先頭の2文字を取り出し，取り出した文字列から単語の位置（先頭から何番目の単語か）への
      *  連想配列（辞書型もしくはマップ型）を作成せよ
      */
-    fun Question4(): Map<String, Int> {
+    fun Question4() {
         val oneCharIndexList = listOf(1, 5, 6, 7, 8, 9, 15, 16, 19)
         val questionStr = "Hi He Lied Because Boron Could Not Oxidize Fluorine. " +
                 "New Nations Might Also Sign Peace Security Clause. Arthur King Can."
 
         val wordList = questionStr.replace(".", "").split(" ")
-        var retMap = mutableMapOf<String, Int>()
+        var answer = mutableMapOf<String, Int>()
 
         for(i in 1..wordList.size) {
             when(i) {
-                in oneCharIndexList -> retMap.put(wordList[i-1].take(1), i)
-                else -> retMap.put(wordList[i-1].take(2), i)
+                in oneCharIndexList -> answer.put(wordList[i-1].take(1), i)
+                else -> answer.put(wordList[i-1].take(2), i)
             }
         }
-        return retMap
+        println("04. answer=" + answer.keys)
     }
 
     /**
@@ -79,8 +89,9 @@ class Chapter1 {
     fun Question5() {
         val questionStr = "I am an NLPer"
         val biGram = Ngram(2)
+        println("05. answer ")
         println("  word bi-gram= " + biGram.makeWord(questionStr.split(" ")))
-        println("  word bi-gram= " + biGram.makeChar(questionStr))
+        println("  char bi-gram= " + biGram.makeChar(questionStr))
     }
 
     /**
@@ -90,6 +101,19 @@ class Chapter1 {
      * さらに，'se'というbi-gramがXおよびYに含まれるかどうかを調べよ．
      */
     fun Question6() {
+        val biGram = Ngram(2)
+        val xGram = biGram.makeChar("paraparaparadise")
+        val yGram = biGram.makeChar("paragraph")
+
+        println("06. answer ")
+        // 和集合
+        println("  union X and Y = " + xGram.toMutableList().addAll(yGram))
+        // 積集合
+        println("  intersection X and Y = " + xGram.filter { x -> yGram.contains(x) })
+        // 差集合
+        println("  difference set X and Y = " + xGram.filterNot { x -> yGram.contains(x) })
+        println("  se contains X bi-gram = " + xGram.contains("se"))
+        println("  se contains Y bi-gram = " + yGram.contains("se"))
 
     }
 
