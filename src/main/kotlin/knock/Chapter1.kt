@@ -24,7 +24,8 @@ class Chapter1 {
      * 文字列"stressed"の文字を逆に（末尾から先頭に向かって）並べた文字列を得よ
      */
     fun Question0() {
-        println("00. answer=" + "stressed".reversed())
+        val reverseStr = "stressed".reversed()
+        println("00. answer=" + reverseStr)
     }
 
     /**
@@ -53,7 +54,8 @@ class Chapter1 {
     fun Question3() {
         val questionStr = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
         val wordList = questionStr.replace(",", "").replace(".", "").split(" ")
-        println("03. answer=" + wordList.map(String::length))
+        val answerList = wordList.map(String::length)
+        println("03. answer=" + answerList)
     }
 
     /**
@@ -71,15 +73,15 @@ class Chapter1 {
                 "New Nations Might Also Sign Peace Security Clause. Arthur King Can."
 
         val wordList = questionStr.replace(".", "").split(" ")
-        var answer = mutableMapOf<String, Int>()
+        var answerMap = mutableMapOf<String, Int>()
 
         for(i in 1..wordList.size) {
             when(i) {
-                in oneCharIndexList -> answer.put(wordList[i-1].take(1), i)
-                else -> answer.put(wordList[i-1].take(2), i)
+                in oneCharIndexList -> answerMap.put(wordList[i-1].take(1), i)
+                else -> answerMap.put(wordList[i-1].take(2), i)
             }
         }
-        println("04. answer=" + answer.keys)
+        println("04. answer=" + answerMap.keys)
     }
 
     /**
@@ -143,6 +145,17 @@ class Chapter1 {
      */
     fun Question8() {
 
+        fun cipher(target: String): String {
+            return target.toList()
+                    .map { c -> if(c >= 'a' && c <= 'z') c.plus(219 - (c.toByte() * 2)) else c }
+                    .joinToString(separator = "")
+        }
+
+        val originalStr = "This is a Pen."
+        println("08. answer. Original string=" + originalStr)
+        val encryptionStr = cipher(originalStr)
+        println("  Encryption string = " + encryptionStr)
+        println("  Decryption string = " + cipher(encryptionStr))
     }
 
     /**
