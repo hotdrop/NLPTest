@@ -16,6 +16,7 @@ class Chapter1 {
         Question4()
         Question5()
         Question6()
+        Question7()
     }
 
     /**
@@ -124,6 +125,12 @@ class Chapter1 {
      * さらに，x=12, y="気温", z=22.4として，実行結果を確認せよ
      */
     fun Question7() {
+
+        fun template(x: Any, y: Any, z: Any): String {
+            return x.toString() + "時の" + y.toString() + "は" + z.toString()
+        }
+
+        println("07. answer=" + template(12, "気温", 22.4))
 
     }
 
