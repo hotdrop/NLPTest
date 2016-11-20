@@ -3,6 +3,8 @@ package knock
 import java.io.File
 import java.io.FileInputStream
 import java.io.BufferedWriter
+import kotlin.comparisons.compareBy
+import kotlin.comparisons.compareValues
 
 /**
  * 第2章: UNIXコマンドの基礎
@@ -159,11 +161,31 @@ class Chapter2 {
      */
     fun Question17() {
         var col1Lines = mutableListOf<String>()
-        File(filePath).absoluteFile.forEachLine {
+        File(filePath).forEachLine {
             val columns = it.replace("\t", " ").split(" ")
             col1Lines.add(columns[0])
         }
         println("17. answer ")
         col1Lines.distinct().forEach { println("    " + it) }
+    }
+
+    /**
+     * 18. 各行を3コラム目の数値の降順にソート
+     * 各行を3コラム目の数値の逆順で整列せよ.
+     * （注意: 各行の内容は変更せずに並び替えよ）
+     */
+    fun Question18() {
+
+        var dumList = mutableListOf<String>()
+        val separator = "@"
+
+        File(filePath).forEachLine {
+            val columns = it.replace("\t", " ").split(" ")
+            dumList.add(columns[2] + separator + it)
+        }
+        println("18. answer ")
+        dumList.sortedDescending().forEach {
+            println("   " + it.drop(it.indexOf(separator) + 1))
+        }
     }
 }
