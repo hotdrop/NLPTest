@@ -115,4 +115,49 @@ class Chapter2 {
         println("14. answer n=" + n)
         resultLines.forEach{ println("   " + it) }
     }
+
+    /**
+     * 末尾のN行を出力
+     * 自然数Nをコマンドライン引数などの手段で受け取り，入力のうち末尾のN行だけを表示せよ
+     */
+    fun Question15(n: Int) {
+        val resultLines = File(filePath).readLines().takeLast(n)
+        println("15. answer n=" + n)
+        resultLines.forEach { println("   " + it) }
+    }
+
+    /**
+     * ファイルをN分割する
+     * 自然数Nをコマンドライン引数などの手段で受け取り，入力のファイルを行単位でN分割せよ
+     */
+    fun Question16(n: Int) {
+
+        val readLines = File(filePath).readLines()
+        var resultList = mutableListOf<List<String>>()
+        // TODO この実装だとnがreadLines.size/2を越えると全部１個ずつ区切りになってしまう
+        val divideNumber = if(n > 0) readLines.size/n else readLines.size
+
+        var startIdx = 0
+        var nextIdx = divideNumber
+
+        for(idx in 1..n) {
+            resultList.add(readLines.subList(startIdx, nextIdx))
+            startIdx = nextIdx
+            nextIdx = if(idx+1 != n) nextIdx + divideNumber else readLines.size
+        }
+
+        println("16. answer n=" + n)
+        resultList.forEachIndexed { idx, list ->
+            println("  分割" + (idx + 1) + "つ目")
+            list.forEach { println("    " + it) }
+        }
+    }
+
+    /**
+     * １列目の文字列の異なり
+     * 1列目の文字列の種類（異なる文字列の集合）を求めよ
+     */
+    fun Question17() {
+
+    }
 }
