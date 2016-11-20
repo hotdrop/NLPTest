@@ -2,11 +2,11 @@ package knock
 
 import org.junit.Test
 
-class Chapter1Test {
+class ChapterTest {
 
     @Test
     fun TestQuestion() {
-        val prob = Chapter1()
-        prob.Question9()
+        val prob = Chapter2()
+        prob.Question10()
     }
 }
