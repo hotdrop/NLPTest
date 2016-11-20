@@ -158,6 +158,12 @@ class Chapter2 {
      * 1列目の文字列の種類（異なる文字列の集合）を求めよ
      */
     fun Question17() {
-
+        var col1Lines = mutableListOf<String>()
+        File(filePath).absoluteFile.forEachLine {
+            val columns = it.replace("\t", " ").split(" ")
+            col1Lines.add(columns[0])
+        }
+        println("17. answer ")
+        col1Lines.distinct().forEach { println("    " + it) }
     }
 }
