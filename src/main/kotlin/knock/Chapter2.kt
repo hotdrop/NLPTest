@@ -11,12 +11,17 @@ class Chapter2 {
 
     val filePath = System.getProperty("user.dir") + "/src/main/resources/hightemp.txt"
 
+    fun BufferedWriter.writeLine(line : String) {
+        this.write(line)
+        this.newLine()
+    }
+
     /**
      * 行数のカウント
      * 行数をカウントせよ．
      */
     fun Question10() {
-        val readText = File(filePath).readText(Charsets.UTF_8)
+        val readText = File(filePath).readText()
         println("10. answer=" + readText.lines().size)
     }
 
@@ -50,12 +55,35 @@ class Chapter2 {
         File(col2TextPath).absoluteFile.forEachLine { println("    " + it) }
     }
 
-    private fun makeCol1AndCol2() {
-
-        fun BufferedWriter.writeLine(line : String) {
-            this.write(line)
-            this.newLine()
+    /**
+     * col1.txtとcol2.txtをマージ
+     * Question12で作ったcol1.txtとcol2.txtを結合し，元のファイルの1列目と2列目をタブ区切りで
+     * 並べたテキストファイルを作成せよ
+     */
+    fun Question13() {
+        makeCol1AndCol2()
+        val col1TextLines = File(col1TextPath).readLines()
+        val col2TextLines = File(col2TextPath).readLines()
+        var unionList = mutableListOf<String>()
+        col1TextLines.forEachIndexed { index, line ->
+            if(index <= col2TextLines.size) {
+                unionList.add(line + "\t" + col2TextLines[index])
+            } else {
+                unionList.add(line)
+            }
         }
+
+        val unionFilePath = System.getProperty("user.dir") + "/src/main/resources/unionCol1Col2.txt"
+        File(unionFilePath).bufferedWriter().use { out ->
+            unionList.forEach { out.writeLine(it) }
+        }
+
+        println("13. answer ")
+        println("  col1.txt union col2.txt ")
+        File(unionFilePath).absoluteFile.forEachLine { println("    " + it) }
+    }
+
+    private fun makeCol1AndCol2() {
 
         var col1Lines = mutableListOf<String>()
         var col2Lines = mutableListOf<String>()
@@ -77,4 +105,6 @@ class Chapter2 {
             col2Lines.forEach { out.writeLine(it) }
         }
     }
+
+
 }
