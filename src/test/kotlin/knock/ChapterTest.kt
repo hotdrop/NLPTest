@@ -9,4 +9,12 @@ class ChapterTest {
         val prob = Chapter2()
         prob.Question13()
     }
+
+    @Test
+    fun TestQuestion14() {
+        val prob = Chapter2()
+        prob.Question14(1)
+        prob.Question14(5)
+        prob.Question14(10)
+    }
 }

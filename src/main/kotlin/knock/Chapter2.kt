@@ -106,5 +106,13 @@ class Chapter2 {
         }
     }
 
-
+    /**
+     * 先頭からN行を出力
+     * 自然数Nをコマンドライン引数などの手段で受け取り，入力のうち先頭のN行だけを表示せよ
+     */
+    fun Question14(n: Int) {
+        val resultLines = File(filePath).readLines().take(n)
+        println("14. answer n=" + n)
+        resultLines.forEach{ println("   " + it) }
+    }
 }
