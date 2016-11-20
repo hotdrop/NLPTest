@@ -7,6 +7,6 @@ class Chapter1Test {
     @Test
     fun TestQuestion() {
         val prob = Chapter1()
-        prob.Question8()
+        prob.Question9()
     }
 }

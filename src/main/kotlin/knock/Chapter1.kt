@@ -2,6 +2,7 @@ package knock
 
 import utility.KnockString
 import utility.Ngram
+import java.util.*
 
 /**
  * 第1章: 準備運動
@@ -169,5 +170,31 @@ class Chapter1 {
      */
     fun Question9() {
 
+        fun randSort(target: String): String {
+
+            if(target.length <= 4) {
+                return target
+            }
+
+            val charMap = mutableMapOf<Int, Char>()
+            val rand = Random()
+
+            target.toList().forEachIndexed { index, c ->
+                when(index) {
+                    0 -> charMap.put(-1, c)
+                    target.length - 1 -> charMap.put(100, c)
+                    else -> charMap.put(rand.nextInt(99), c)
+                }
+            }
+
+            val results = charMap.toSortedMap().values
+            return results.joinToString(separator = "")
+        }
+
+        val originalStr = "I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind ."
+        val resultList = originalStr.split(" ").map(::randSort)
+        println("09. answer. ")
+        println("  Original string=" + originalStr)
+        println("      Make string= " + resultList.joinToString(separator = " "))
     }
 }
