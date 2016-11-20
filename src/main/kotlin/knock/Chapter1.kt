@@ -194,7 +194,7 @@ class Chapter1 {
         val originalStr = "I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind ."
         val resultList = originalStr.split(" ").map(::randSort)
         println("09. answer. ")
-        println("  Original string=" + originalStr)
+        println("  Original string= " + originalStr)
         println("      Make string= " + resultList.joinToString(separator = " "))
     }
 }
