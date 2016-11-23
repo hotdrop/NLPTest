@@ -1,6 +1,5 @@
 package knock
 
-import utility.KnockString
 import utility.Ngram
 import java.util.*
 
