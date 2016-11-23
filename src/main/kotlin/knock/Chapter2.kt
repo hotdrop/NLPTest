@@ -154,7 +154,6 @@ class Chapter2 {
     }
 
     /**
-     * １列目の文字列の異なり
      * 1列目の文字列の種類（異なる文字列の集合）を求めよ
      */
     fun Question17() {
@@ -168,7 +167,6 @@ class Chapter2 {
     }
 
     /**
-     * 18. 各行を3コラム目の数値の降順にソート
      * 各行を3コラム目の数値の逆順で整列せよ.
      * （注意: 各行の内容は変更せずに並び替えよ）
      */
@@ -188,7 +186,6 @@ class Chapter2 {
     }
 
     /**
-     * 各行の1コラム目の文字列の出現頻度を求め，出現頻度の高い順に並べる
      * 各行の1列目の文字列の出現頻度を求め，その高い順に並べて表示せよ
      */
     fun Question19() {
@@ -208,14 +205,7 @@ class Chapter2 {
 
         var sortList = ArrayList<Map.Entry<Char, Int>>(map.entries)
         Collections.sort(sortList) { o1, o2 -> o2.value.compareTo(o1.value) }
-        /*Collections.sort(sortList, object : Comparator<Map.Entry<Char, Int>> {
-            override fun compare(o1: Map.Entry<Char, Int>, o2: Map.Entry<Char, Int>): Int {
-                return o1.value.compareTo(o2.value)
-            }
-        })*/
         println("19. answer ")
         sortList.forEach { println("   frequency=" + it.value + " value=" + it.key) }
     }
-
-
 }

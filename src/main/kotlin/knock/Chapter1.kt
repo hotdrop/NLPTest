@@ -14,8 +14,8 @@ class Chapter1 {
      * 文字列"stressed"の文字を逆に（末尾から先頭に向かって）並べた文字列を得よ
      */
     fun Question0() {
-        val reverseStr = "stressed".reversed()
-        println("00. answer=" + reverseStr)
+        val questionStr = "stressed"
+        println("00. answer=" + questionStr.reversed())
     }
 
     /**
@@ -23,8 +23,17 @@ class Chapter1 {
      * 「パタトクカシーー」という文字列の1,3,5,7文字目を取り出して連結した文字列を得よ
      */
     fun Question1() {
-        val kStr = KnockString("パタトクカシーー")
-        println("01. answer=" + kStr.intervalSubstring(2))
+
+        fun String.intervalSubstring(interval: Int): String {
+            var retStr = ""
+            (0..this.length - 1)
+                    .filter { it %interval == 0 && it %interval <= this.length - 1 }
+                    .forEach { retStr += this[it] }
+            return retStr
+        }
+
+        val questionStr = "パタトクカシーー"
+        println("01. answer=" + questionStr.intervalSubstring(2))
     }
 
     /**
@@ -32,8 +41,23 @@ class Chapter1 {
      * 「パトカー」＋「タクシー」の文字を先頭から交互に連結して文字列「パタトクカシーー」を得よ
      */
     fun Question2() {
-        val kStr = KnockString("パトカー")
-        println("02. answer=" + kStr.union("タクシー"))
+
+        fun String.union(afterStr: String): String {
+            val unionLength = if(this.length <= afterStr.length) this.length else afterStr.length
+            var sb = StringBuilder()
+            for(i in 0..unionLength - 1) {
+                sb.append(this[i])
+                sb.append(afterStr[i])
+            }
+            when {
+                this.length > afterStr.length -> sb.append(this.substring(unionLength))
+                this.length < afterStr.length -> sb.append(afterStr.substring(unionLength))
+            }
+            return sb.toString()
+        }
+
+        val questionStr = "パトカー"
+        println("02. answer=" + questionStr.union("タクシー"))
     }
 
     /**

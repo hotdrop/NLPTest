@@ -8,18 +8,14 @@ class Ngram(n: Int) {
         val end = wordList.size - n
         var retList: MutableList<String> = mutableListOf()
         // TODO I feel wrong..umm
-        for(i in 0..end) {
-            retList.add(wordList[i] + ":" + wordList[i+n-1])
-        }
+        (0..end).mapTo(retList) { wordList[it] + ":" + wordList[it +n-1] }
         return retList
     }
 
     fun makeChar(str: String): List<String> {
         val end = str.length - n
         var retList: MutableList<String> = mutableListOf()
-        for(i in 0..end) {
-            retList.add(str.substring(i, i+n))
-        }
+        (0..end).mapTo(retList) { str.substring(it, it +n) }
         return retList
     }
 }
