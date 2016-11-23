@@ -1,10 +1,8 @@
 package knock
 
 import java.io.File
-import java.io.FileInputStream
 import java.io.BufferedWriter
-import kotlin.comparisons.compareBy
-import kotlin.comparisons.compareValues
+import java.util.*
 
 /**
  * 第2章: UNIXコマンドの基礎
@@ -188,4 +186,36 @@ class Chapter2 {
             println("   " + it.drop(it.indexOf(separator) + 1))
         }
     }
+
+    /**
+     * 各行の1コラム目の文字列の出現頻度を求め，出現頻度の高い順に並べる
+     * 各行の1列目の文字列の出現頻度を求め，その高い順に並べて表示せよ
+     */
+    fun Question19() {
+        var map = mutableMapOf<Char, Int>()
+        File(filePath).forEachLine {
+            val columns = it.replace("\t", " ").split(" ")
+            val str = columns[0]
+            str.toList().forEach {
+                if(map.containsKey(it)) {
+                    val frequencyCnt = map.get(it)!! + 1
+                    map.put(it, frequencyCnt)
+                } else {
+                    map.put(it, 1)
+                }
+            }
+        }
+
+        var sortList = ArrayList<Map.Entry<Char, Int>>(map.entries)
+        Collections.sort(sortList) { o1, o2 -> o2.value.compareTo(o1.value) }
+        /*Collections.sort(sortList, object : Comparator<Map.Entry<Char, Int>> {
+            override fun compare(o1: Map.Entry<Char, Int>, o2: Map.Entry<Char, Int>): Int {
+                return o1.value.compareTo(o2.value)
+            }
+        })*/
+        println("19. answer ")
+        sortList.forEach { println("   frequency=" + it.value + " value=" + it.key) }
+    }
+
+
 }

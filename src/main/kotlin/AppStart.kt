@@ -1,7 +1,9 @@
 import knock.Chapter1
+import knock.Chapter2
 
 fun main(args: Array<String>) {
     runChapter1()
+    runChapter2()
 }
 
 fun runChapter1() {
@@ -18,5 +20,14 @@ fun runChapter1() {
 }
 
 fun runChapter2() {
-
+    Chapter2().Question10()
+    Chapter2().Question11()
+    Chapter2().Question12()
+    Chapter2().Question13()
+    Chapter2().Question14(4)
+    Chapter2().Question15(4)
+    Chapter2().Question16(4)
+    Chapter2().Question17()
+    Chapter2().Question18()
+    Chapter2().Question19()
 }
